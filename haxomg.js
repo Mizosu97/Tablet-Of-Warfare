@@ -49,10 +49,55 @@
         {name: 'triplet', build: '565656565656567878787878787844444'},
     ];
 
+    const themes = [
+        {name: 'catppuccin', commands: [
+            "net_replace_color 0 0xA6ADC8",
+            "net_replace_color 1 0x9399B2",
+            "net_replace_color 2 0xF5C2E7",
+            "net_replace_color 3 0x89B4FA",
+            "net_replace_color 4 0xF38BA8",
+            "net_replace_color 5 0xCBA6F7",
+            "net_replace_color 6 0xA6E3A1",
+            "net_replace_color 7 0x94E2D5",
+            "net_replace_color 8 0xF9E2AF",
+            "net_replace_color 9 0xEBA0AC",
+            "net_replace_color 10 0x74C7EC",
+            "net_replace_color 11 0xF2CDCD",
+            "net_replace_color 12 0xBAC2DE",
+            "net_replace_color 12 0xB4BEFE",
+            "net_replace_color 13 0xF5C2E7",
+            "net_replace_color 14 0xCDD6F4",
+            "net_replace_color 15 0xB4BEFE",
+            "net_replace_color 16 0xF5E0DC",
+            "ui_replace_colors 0x74C7EC 0xA6E3A1 0xF38BA8 0xF9E2AF 0x89B4FA 0xCBA6F7 0xF2CDCD 0xF5E0DC",
+            "ren_background_color 0x1E1E2E",
+            "ren_border_color 0x11111B",
+            "ren_minimap_background_color 0x585B70",
+            "ren_minimap_border_color 0x585B70",
+            "ren_health_fill_color 0xA6E3A1",
+            "ren_health_background_color 0x11111B",
+            "ren_xp_bar_fill_color 0xF9E2AF",
+            "ren_score_bar_fill_color 0xA6E3A1",
+            "ren_bar_background_color 0x11111B",
+            "ren_stroke_solid_color 0x11111B",
+            "ren_grid_color 0x11111B",
+        ]},
+    ];
+
+
     function getBuildByName(name) {
         const foundUpgrade = upgrades.find(upgrade => upgrade.name === name.toLowerCase());
         return foundUpgrade ? foundUpgrade.build : 'x';
     }
+
+    function getThemeByName(name) {
+        const foundTheme = themes.find(theme => theme.name === name.toLowerCase());
+        return foundTheme ? foundTheme.commands : 'x';
+    }
+
+    var CURRENT_THEME = "catppuccin";
+
+
 
   //== Basic Elements ==//
   const main_panel = document.createElement('div')
@@ -168,8 +213,17 @@
     const intendedBuild = getBuildByName(au_input.value);
     if (intendedBuild != "x") {
         input.execute('game_stats_build ' + intendedBuild)
+        var theme = getThemeByName("catppuccin");
+        if (theme != "x") {
+            for (var i = 0; i < theme.length; i++) {
+                input.execute(theme[i]);
+            }
+            CURRENT_THEME = "catppuccin";
+        }
     }
   }
+
+
 
   // Autoset toggle
   const au_autoset = document.createElement('div')
@@ -505,6 +559,9 @@
         input.execute('game_stats_build ' + intendedBuild)
     }
     }
+
+
+
     requestAnimationFrame(draw)
   }
   draw()
