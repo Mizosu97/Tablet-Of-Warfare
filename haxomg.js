@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Diep.io x03 Mod Menu
+// @name         Ankhikamuns Tablet of Warfare
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @homepage     https://greasyfork.org/scripts/
@@ -291,7 +291,7 @@
       margin-right: 10px;
       cursor: pointer;
     }
-    
+
     .switch div {
       height: 1em;
       width: 1em;
@@ -302,7 +302,7 @@
       transition: all 100ms;
       cursor: pointer;
     }
-    
+
     .switch input:checked + div {
       -webkit-transform: translate3d(100%, 0, 0);
       -moz-transform: translate3d(100%, 0, 0);
@@ -313,7 +313,7 @@
     .panel_1 {
       display: inline-flex;
       flex-direction: column;
-      
+
       padding: 4px;
       width: fit-content;
       height: 100%;
@@ -328,7 +328,7 @@
       src: url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
       font-weight: bold;
       cursor: pointer;
-      font-size: 14px; 
+      font-size: 14px;
 
       padding: 2px 4px 2px 4px;
       margin-top: 2px;
@@ -352,7 +352,7 @@
       src: url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
       font-weight: bold;
       cursor: pointer;
-      font-size: 18px; 
+      font-size: 18px;
 
       padding: 4px 8px 4px 8px;
       margin-bottom: 4px;
