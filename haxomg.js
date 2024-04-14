@@ -15,6 +15,45 @@
 ;(function () {
   'use strict'
 
+    const upgrades = [
+        {name: 'rocketeer', build: '565656565656567878787878787822333'},
+        {name: 'skimmer', build: '565656565656484848484848487777777'},
+        {name: 'factory', build: '565656565656564848484848484777777'},
+        {name: 'spike', build: '5656565656565677744487777888222222222233333333338888888888111'},
+        {name: 'autosmasher', build: '5656565656565677744487777888222222222233333333338888888888111'},
+        {name: 'annihilator', build: '565656565656484848484848487777777'},
+        {name: 'battleship', build: '565656565656564848484848447777777'},
+        {name: 'autotrapper', build: '565656565656564444848877787878787'},
+        {name: 'streamliner', build: '565656565656564444488888878777777'},
+        {name: 'spreadshot', build: '565656565656567878787878787843242'},
+        {name: 'auto5', build: '565656565656567847847847847847878'},
+        {name: 'autogunner', build: '565656565656567847847847847847878'},
+        {name: 'landmine', build: '5656565656565677744487777888222222222233333333338888888888111'},
+        {name: 'tritrapper', build: '565656565656567878787878787823424'},
+        {name: 'megatrapper', build: '565656565656564444488888887777777'},
+        {name: 'overtrapper', build: '565656565656564848484848887777777'},
+        {name: 'gunnertrapper', build: '565656565656567847847847847847878'},
+        {name: 'sprayer', build: '565656565656567847847847847847878'},
+        {name: 'predator', build: '565656565656564784784784784784788'},
+        {name: 'manager', build: '565656565656568484848484844787777'},
+        {name: 'hybrid', build: '565656565656848484848484847777777'},
+        {name: 'fighter', build: '565656565656567878787878787823233'},
+        {name: 'booster', build: '565656565656567878787878787823233'},
+        {name: 'ranger', build: '565656565656564784784784784784784'},
+        {name: 'stalker', build: '565656565656564784784784784784784'},
+        {name: 'tripletwin', build: '565656565656567878787878787844444'},
+        {name: 'necromancer', build: '565656565656564848484848484777777'},
+        {name: 'pentashot', build: '565656565656567878787878787844442'},
+        {name: 'overlord', build: '565656565656568484848484848477223'},
+        {name: 'octotank', build: '565656565656567878787878787844423'},
+        {name: 'triplet', build: '565656565656567878787878787844444'},
+    ];
+
+    function getBuildByName(name) {
+        const foundUpgrade = upgrades.find(upgrade => upgrade.name === name.toLowerCase());
+        return foundUpgrade ? foundUpgrade.build : 'x';
+    }
+
   //== Basic Elements ==//
   const main_panel = document.createElement('div')
   main_panel.id = 'main_panel'
@@ -126,7 +165,10 @@
   au_set_button.textContent = 'Set Build'
 
   au_set_button.onclick = function () {
-    input.execute('game_stats_build ' + au_input.value)
+    const intendedBuild = getBuildByName(au_input.value);
+    if (intendedBuild != "x") {
+        input.execute('game_stats_build ' + intendedBuild)
+    }
   }
 
   // Autoset toggle
@@ -175,7 +217,7 @@
     display_panel.style.textAlign = 'center'
     display_panel.innerHTML = `
     <br>
-    <h3>Ankhikamun's God Panel</h3>
+    <h3>Jesus</h3>
 
     <style>
     br {
@@ -362,14 +404,14 @@
 
   //== Events ==//
   document.body.onkeyup = function (ctx) {
-    if (ctx.keyCode === 82) {
-      ToggleDisplay('main_panel')
-    } else if (document.activeElement === au_input && parseInt(ctx.key) >= 1 && parseInt(ctx.key) <= 8) {
-      au_input.value = au_input.value + ctx.key
+    if (ctx.keyCode === 220) {
+        ToggleDisplay('main_panel');
+    } else if (document.activeElement === au_input && /^[a-zA-Z]$/.test(ctx.key)) {
+        au_input.value = au_input.value + ctx.key;
     } else if (document.activeElement === au_input && ctx.keyCode === 8) {
-      au_input.value = au_input.value.slice(0, -1)
+        au_input.value = au_input.value.slice(0, -1);
     }
-  }
+}
 
   document.onmousemove = function () {
     x = event.clientX
@@ -423,14 +465,14 @@
       ctx.moveTo(X, Y)
       ctx.lineTo(x, y)
       ctx.lineWidth = 50
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)'
+      ctx.strokeStyle = 'rgba(17, 17, 27, 0.05)'
       ctx.stroke()
 
       ctx.beginPath()
       ctx.moveTo(X, Y)
       ctx.lineTo(x, y)
       ctx.lineWidth = 2
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.7)'
+      ctx.strokeStyle = 'rgba(17, 17, 27, 0.7)'
       ctx.stroke()
     }
 
@@ -439,7 +481,7 @@
       ctx.lineWidth = 2
       ctx.beginPath()
       ctx.arc(X, Y, radius[3], 0, 2 * Math.PI)
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.7)'
+      ctx.strokeStyle = 'rgba(17, 17, 27, 0.7)'
       ctx.stroke()
 
       // Inner Circle
@@ -458,7 +500,10 @@
     }
 
     if (au_autoset_toggle.checked) {
-      input.execute('game_stats_build ' + au_input.value)
+        const intendedBuild = getBuildByName(au_input.value);
+        if (intendedBuild != "x") {
+        input.execute('game_stats_build ' + intendedBuild)
+    }
     }
     requestAnimationFrame(draw)
   }
