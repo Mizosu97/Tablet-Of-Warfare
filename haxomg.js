@@ -64,7 +64,7 @@
 
   // Header
   const header = document.createElement('h1')
-  header.textContent = 'Ankhikamun\'s Tablet of Warfare [R]'
+  header.textContent = 'Ankhikamun\'s Tablet of Warfare [\\]'
   anchor.appendChild(header)
 
   // Holder panel
